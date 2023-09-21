@@ -1,5 +1,5 @@
 body {
- font-family: 'Mirza', serif;
+  font-family: "Mirza", serif;
   color: white;
 }
 
@@ -13,12 +13,12 @@ body {
   border-radius: 10px;
   padding: 15px;
   margin: -3px auto;
-  max-width: 600px ;
+  max-width: 600px;
 }
 
 h1 {
   color: white;
-  font-family: 'DM Serif Display', serif;
+  font-family: "DM Serif Display", serif;
   font-size: 24px;
   font-weight: 100;
   line-height: 28.8px;
@@ -28,33 +28,33 @@ h1 {
 }
 
 ul {
-    margin: 0 0 20;
-    padding: 0;
+  margin: 0 0 20;
+  padding: 0;
 }
 
 li {
-    font-size: 15px;
-    font-weight: 100;
-    height: 19px;
-    line-height: 1;
-    list-style: none;
+  font-size: 15px;
+  font-weight: 100;
+  height: 19px;
+  line-height: 1;
+  list-style: none;
 }
 
 .temp {
-    font-size: 48px;
+  font-size: 48px;
 }
 
 .weather-emoji {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 .unit {
-    position: relative;
-    top: -21px;
-    font-size: 14px;
+  position: relative;
+  top: -21px;
+  font-size: 14px;
 }
 
-.search-box, 
+.search-box,
 .input-box,
 .input-current {
   cursor: pointer;
@@ -69,8 +69,8 @@ li {
 }
 
 .prediction {
-    padding-top: 20px;
-    text-align: center;
+  padding-top: 20px;
+  text-align: center;
 }
 .github {
   color: black;
@@ -78,5 +78,4 @@ li {
   max-width: 600px;
   margin: auto;
   font-style: italic;
-  
 }
