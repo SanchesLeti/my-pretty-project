@@ -46,8 +46,8 @@ li {
 }
 
 .weather-emoji {
-      margin-right: -13px;
-    margin-top: -5px;
+  margin-right: -13px;
+  margin-top: -5px;
 }
 
 .unit {
@@ -80,4 +80,12 @@ li {
   max-width: 600px;
   margin: auto;
   font-style: italic;
+}
+.celsius .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+.celsius .active :hover {
+  text-decoration: none;
 }

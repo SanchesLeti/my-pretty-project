@@ -1,3 +1,5 @@
+// Current date & time
+
 function formatDate(date) {
   let hours = date.getHours();
   if (hours < 10) {
@@ -23,6 +25,16 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+
+let dateElement = document.querySelector("#date");
+let currentTime = new Date();
+dateElement.innerHTML = formatDate(currentTime);
+
+//Form-search 
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
+
 function search(event) {
   event.preventDefault();
   let cityElement = document.querySelector("#city");
@@ -30,26 +42,7 @@ function search(event) {
   cityElement.innerHTML = cityInput.value;
 }
 
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = 66;
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = 19;
-}
-
-let dateElement = document.querySelector("#date");
-let currentTime = new Date();
-dateElement.innerHTML = formatDate(currentTime);
-
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
-
-//Api temperature
+//Api display
 
 function displayWeather(response) {
   
@@ -73,8 +66,9 @@ function displayWeather(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
-  iconElement.setAttribute("alt", response.data.weather[0].description); 
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 
+  celsiusTemp = response.data.main.temp;
 }
 
 function search(event) {
@@ -84,3 +78,34 @@ function search(event) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
 }
+
+
+// Celsius to Fahrenheit
+
+function showFahreTemp(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  
+  celciusLink.classList.remove("active");
+  fahreLink.classList.add("active");
+  let farheTemp = (celsiusTemp * 9) / 5 + 32;
+  
+  tempElement.innerHTML = Math.round(farheTemp);
+}
+
+function showCelciusTemp(event) {
+  event.preventDefault();
+    celciusLink.classList.add("active");
+    fahreLink.classList.remove("active");
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(celsiusTemp);
+}
+
+let celsiusTemp = null;
+
+let fahreLink = document.querySelector("#fahre-link");
+fahreLink.addEventListener("click", showFahreTemp);
+
+let celciusLink = document.querySelector("#celcius-link");
+celciusLink.addEventListener("click", showCelciusTemp);
+
