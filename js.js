@@ -53,10 +53,14 @@ searchForm.addEventListener("submit", search);
 
 function displayWeather(response) {
   console.log(response.data);
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temp").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = response.data.name;
+
+  let conditionElement = document.querySelector("#condition");
+  conditionElement.innerHTML = response.data.weather[0].description;
+
+  let temperatureElement = document.querySelector("#temp");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
 }
 
 function search(event) {
