@@ -52,7 +52,7 @@ searchForm.addEventListener("submit", search);
 //Api temperature
 
 function displayWeather(response) {
-  console.log(response.data);
+  
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
 
@@ -67,6 +67,13 @@ function displayWeather(response) {
   
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
 
 }
 

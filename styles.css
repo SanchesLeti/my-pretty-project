@@ -46,7 +46,8 @@ li {
 }
 
 .weather-emoji {
-  margin-right: 15px;
+      margin-right: -13px;
+    margin-top: -5px;
 }
 
 .unit {
