@@ -89,3 +89,15 @@ li {
 .celsius .active :hover {
   text-decoration: none;
 }
+.date-prediction {
+  margin-bottom: -29px;
+  font-size: 14px;
+}
+.temp-prediction {
+  margin-bottom: 1px;
+  margin-top: -35px;
+  font-size: 13px;
+}
+.min-prediction {
+  opacity: 0.6;
+}
