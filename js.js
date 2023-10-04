@@ -3,20 +3,18 @@
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-function search(event)
-{
+function search(event) {
   event.preventDefault();
-  
+
   let cityElement = document.querySelector("#city");
   let cityInput = document.querySelector("#city-input");
 
-cityElement.innerHTML = cityInput.value;
+  cityElement.innerHTML = cityInput.value;
 }
 
 // Current date & time
 
 function formatDate(date) {
-
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -36,51 +34,58 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  
-let day = days[dayIndex];
-return `${day} ${hours}:${minutes}`;
+
+  let day = days[dayIndex];
+  return `${day} ${hours}:${minutes}`;
 }
 
-//Api display 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
+//Api display
 
 function displayForecast(response) {
-
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
 
-  days.forEach(function (forecastDay) {
+  forecast.forEach(function (forecastDay) {
     forecastHTML =
       forecastHTML +
       `
         <div class="col">
-          <div class="date-prediction">${forecastDay.dt}</div>
+          <div class="date-prediction">${formatDay(forecastDay.dt)}</div>
           <br />
           <div class="img-prediction">
             <img
-              src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}10d@2x.png"
+              src="https://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
               alt=""
               width="42"
             />
           </div>
           <br />
           <div class="temp-prediction">
-            <span class="max-prediction">${forecastDay.tem.max}°</span>
-            <span class="min-prediction">${forecastDay.temp.min}°</span>
+            <span class="max-prediction">${Math.round(forecastDay.temp.max)}°</span>
+            <span class="min-prediction">${Math.round(forecastDay.temp.min)}°</span>
           </div>
         </div>
   `;
   });
 
-forecastHTML = forecastHTML + `</div>`;
-forecastElement.innerHTML = forecastHTML;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 let dateElement = document.querySelector("#date");
 let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
-
 
 function getForescast(coordinates) {
   console.log(coordinates);
@@ -91,9 +96,7 @@ function getForescast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
-
 function displayWeather(response) {
-
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.name;
 
@@ -116,12 +119,11 @@ function displayWeather(response) {
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-celsiusTemp = response.data.main.temp;
-getForescast(response.data.coord);
+  celsiusTemp = response.data.main.temp;
+  getForescast(response.data.coord);
 }
 
 function search(event) {
-
   event.preventDefault();
   let apiKey = "88724523008dc9e1be18f6eb6a959b67";
   let city = document.querySelector("#city-input").value;
@@ -132,7 +134,6 @@ function search(event) {
 // Celsius to Fahrenheit
 
 function showFahreTemp(event) {
-
   event.preventDefault();
   let tempElement = document.querySelector("#temp");
 
@@ -144,7 +145,6 @@ function showFahreTemp(event) {
 }
 
 function showCelciusTemp(event) {
-
   event.preventDefault();
   celciusLink.classList.add("active");
   fahreLink.classList.remove("active");
