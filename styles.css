@@ -43,7 +43,14 @@ li {
 }
 #city {
   position: relative;
-  left: 215px;
+  left: 220px;
+}
+
+#currentData {
+  position: relative;
+  left: 187px;
+  top: 15px
+
 }
 .temp {
   font-size: 48px;
