@@ -160,3 +160,4 @@ fahreLink.addEventListener("click", showFahreTemp);
 
 let celciusLink = document.querySelector("#celcius-link");
 celciusLink.addEventListener("click", showCelciusTemp);
+
